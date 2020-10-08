@@ -90,7 +90,7 @@ You can now run the development server:
 ![Alt text](/Online-IPL-ticket%20Booking%20Images/register.png?raw=true "Optional Title")
 ![Alt text](/Online-IPL-ticket%20Booking%20Images/login.png?raw=true "Optional Title")
 ![Alt text](/Online-IPL-ticket%20Booking%20Images/home%20page.png?raw=true "Optional Title")
-![Alt text](/Online-IPL-ticket%20Booking%20Images/ticket%20available.png?raw=true "Optional Title")
+![Alt text](/Online-IPL-ticket%20Booking%20Images/tickets%20avaliable.png?raw=true "Optional Title")
 ![Alt text](/Online-IPL-ticket%20Booking%20Images/booking.png?raw=true "Optional Title")
 ![Alt text](/Online-IPL-ticket%20Booking%20Images/select%20seat.png?raw=true "Optional Title")
 ![Alt text](/Online-IPL-ticket%20Booking%20Images/payment.png?raw=true "Optional Title")
