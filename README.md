@@ -69,8 +69,8 @@ After that just install the local dependencies, run migrations, and start the se
 
 First clone the repository from Github and switch to the new directory:
 
-    $ git clone git@github.com/USERNAME/{{ project_name }}.git
-    $ cd {{ project_name }}
+    $ git clone https://github.com/nidhisri99/Online-IPL-Ticket-Booking/.git
+    $ cd Online-IPL-Ticket-Booking
     
 Activate the virtualenv for your project.
     
