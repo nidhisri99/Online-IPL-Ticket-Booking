@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Print Ticket</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/printticket.css'>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   
+     <!-- <script src='/static/js/printticket.js'></script>  -->
+</head>
+<body>
+    <p style="color:rgb(19, 0, 0);" font-family = "lobster";><b> HELLO {{user.username}} Your Ticket is Ready</b></p>
+    <div class="wrapper">
+        <div class="main_card">
+            <div class="card_left">
+                <div class="card_datails">
+                    <h1 name = "matchfullname" id="printFullMatchName" ></h1>
+                    <div class="card_cat">
+                        <p name = "gate" class="PG">Gate - 1</p>
+                        <p id="matchSeatPrint" name = "seat_numbers" class="year"> </p>
+                        <p id="matchNumber" name = "match_number" class="genre"> </p>
+                        <p class="time" name = "match_time">08:00 PM</p>
+                    </div>
+                    <div id="matchLocationPrint" name = "location"></div>
+                    <p class="disc">Click here to go to the location</p>
+                    <a href="https://www.google.com/maps/place/M+Chinnaswamy+Stadium/@12.9787989,77.5976268,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae1664d3619b53:0xc13769784709aec!8m2!3d12.9787937!4d77.5998155/" target="_blank">Location</a>
+                <div class="social-btn">
+            
+                    
+                    <!-- GET-->
+                  
+                    <button onclick="window.print()">
+                        <i class="fas fa-download"></i> DOWNLOAD
+                    </button>
+                   <button onclick = "window.location.href='http://127.0.0.1:8000/tickets/';">
+                    <i class="fas fa-download"></i> HOME
+                   </button>
+                
+                    
+                </div>	
+                </div>
+            </div>
+            <div class="card_right">
+                <div class="img_container">
+                    <img id ="matchImagePrint" name = "match_image" src="/media/pics/MIvsRCB.jpg" alt="">
+                    </div>
+                    <div class="play_btn">
+                        <a href="https://www.imdb.com/title/tt4912910/" target="_blank">
+                            <i class="fas fa-play-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+
+    
+    
+</body>
+</html>
+<script>
+
+    $(document).ready(function(){
+        $("#printFullMatchName").text(localStorage.getItem("MatchFullName"));
+        $("#matchLocationPrint").text(localStorage.getItem("MatchLocation"));
+        $("#matchNumber").text("M-"+localStorage.getItem("MatchNumber"));
+        $("#matchImagePrint").attr("src",localStorage.getItem("MatchImage"));
+        $("#matchSeatPrint").text("S- "+localStorage.getItem("selectedSeat"));
+        console.log(localStorage.getItem("MatchFullName"));
+        });
+</script>

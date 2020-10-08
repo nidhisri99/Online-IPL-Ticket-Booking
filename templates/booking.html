@@ -1,0 +1,22 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <meta charset='utf-8'>
+     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+     <title>booking</title>
+     {% load static %}
+     <meta name='viewport' content='width=device-width, initial-scale=1'>
+     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/login.css' %}">
+     <script src="{% static 'js/main.js' %}"></script>
+ </head>
+ <body>
+    {% block content %}
+    {{book.b_id}}
+    {% endblock  %}
+
+    <h1>u r booking is ready.....</h1> 
+    <form method="POST">
+        <input type="text" name="match name" placeholder="name"><br/>
+    </form>
+ </body>
+ </html>

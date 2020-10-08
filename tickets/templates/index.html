@@ -1,0 +1,311 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>IPL(home)</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="IPL template project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/bootstrap4/bootstrap.min.css' %}">
+	<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/responsive.css' %}">
+</head>
+
+<body>
+
+	<div class="super_container">
+
+		<!-- Header -->
+
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
+								<div class="logo"><a href="#">IPL</a></div>
+								<nav class="main_nav">
+									<ul class="d-flex flex-row align-items-start justify-content-start">
+										<li class="active"><a href="/tickets">Home</a></li>
+										<li><a href="">About us</a></li>
+										<li><a href="#destinations"  data-scroll-to="#destinations">Tickets</a></li>
+										<li><a href="/cancel/">Cancel Tickets</a></li>
+										{% if user.is_authenticated %}
+										<li style="color:white;" font-family = "lobster";><b> HELLO {{user.username}}</b></li>
+										<li><a href="/account/logout">Logout</a></li>
+										{% else %}
+										<li><a href="/account/register">Register</a></li>
+										<li><a href="/account/login">Login</a></li>
+										{% endif %}
+									</ul>
+								</nav>
+
+								<!-- Hamburger -->
+
+								<div class="hamburger ml-auto">
+									<i class="fa fa-bars" aria-hidden="true"></i>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="header_social d-flex flex-row align-items-center justify-content-start">
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				</ul>
+			</div> -->
+		</header>
+
+			
+			<div class="menu_social">
+				
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Home -->
+
+		<div class="home">
+
+			<!-- Home Slider -->
+			<div class="home_slider_container">
+				<div class="owl-carousel owl-theme home_slider">
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image"
+							style="background-image:url({% static 'image/iplbg.jpg' %})"></div>
+						<div class="home_slider_content_container">
+							<div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="home_slider_content">
+											<div class="home_title">
+												<h2 style="color: rgba(0, 0, 0, 0.568);">We are the Best, Forget the Rest</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+
+				
+			</div>
+		</div>
+		<div class="home_page_nav">
+			<ul class="d-flex flex-column align-items-end justify-content-end">
+				
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+		
+
+		<!-- Stadium Destinations -->
+
+		<div class="destinations" id="destinations">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_title">
+							<h2>Tickets Avaliable</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row destinations_row">
+					<div class="col">
+						<div class="destinations_container item_grid">
+
+							{% for tic in tics %}
+							<!-- Destination -->
+							<div class="destination item">
+								<div class="destination_image">
+									<img src= "{{tic.img.url}}" alt="pic">
+								</div>
+								{% if user.is_authenticated %}
+								<div class="destination_content">
+									<div class="destination_title matchNameClass" ><a href="/booking/" class = "matchName" data-id={{tic.name}} >{{tic.name}}</a>
+										<p  class = "matchDate" data-id={{tic.date}} hidden>{{tic.date}}</p>
+										<p class = "matchFullName" data-id={{tic.fullName}} hidden>{{tic.fullName}}</p>
+										<p class = "matchLocation" data-id={{tic.location}} hidden>{{tic.location}}</p>
+										<p class = "matchNumber" data-id={{tic.m_no}} hidden>{{tic.m_no}}</p>
+										<img src= "{{tic.img.url}}" class = "matchImage" hidden alt="pic">
+									</div>
+									<div class="destination_content">
+										<a href="/booking/" data-id={{tic.fullName}} id="matchFullName" class="fullmatchName" hidden>{{tic.fullName}}</a>
+										</div>	
+								{% else %}	
+									<a href="/account/login"></a>
+								{% endif %}	
+									<div class="destination_subtitle">
+										<p data-id={{tic.date}}>{{tic.date}}</p>
+										<p hidden>{{tic.start_time}}</p>
+									</div>
+									<div class="destination_price">Match Number: {{tic.m_no}}</div>
+									<div class="destination_price">{{tic.location}}</div>
+								</div>
+							</div>
+							
+
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/iplbg.jpg' %}" data-speed="0.8">
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col">
+										<div class="newsletter">
+											<div class="newsletter_title_container text-center">
+												<div class="newsletter_title" style="color: black;">Subscribe to our newsletter to
+													get the latest
+													trends &
+													news</div>
+												<div class="newsletter_subtitle" style="color: black;">Join our database NOW!
+												</div>
+											</div>
+											<div class="newsletter_form_container">
+												<form action="#"
+													class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between"
+													id="newsletter_form">
+													<div
+														class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+														<div><input type="text"
+																class="newsletter_input newsletter_input_name"
+																id="newsletter_input_name" placeholder="Name"
+																required="required">
+															<div class="input_border"></div>
+														</div>
+														<div><input type="email"
+																class="newsletter_input newsletter_input_email"
+																id="newsletter_input_email" placeholder="Your e-mail"
+																required="required">
+															<div class="input_border"></div>
+														</div>
+													</div>
+													<div><button class="newsletter_button" style="color: black;">subscribe</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row footer_contact_row">
+									<div class="col-xl-10 offset-xl-1">
+										<div class="row">
+
+											<!-- Footer Contact Item -->
+											<div class="col-xl-4 footer_contact_col">
+												<div
+													class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+													<div class="footer_contact_icon" style="color: black;"><img
+															src="{% static 'images/sign.svg' %}" alt="">
+													</div>
+													<div class="footer_contact_title" style="color: black;">give us a call</div>
+													<div class="footer_contact_list">
+														<ul>
+															<li style="color: black;">Office Landline: 080-23385687</li>
+															<li style="color: black;">Mobile: +91-97315 42337 </li>
+														</ul>
+													</div>
+												</div>
+											</div>
+
+											<!-- Footer Contact Item -->
+											<div class="col-xl-4 footer_contact_col">
+												<div
+													class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+													<div class="footer_contact_icon"><img
+															src="{% static 'images/trekking.svg' %}" alt="">
+													</div>
+													<div class="footer_contact_title" style="color: black;">come & drop by</div>
+													<div class="footer_contact_list">
+														<ul style="max-width:190px">
+															<li style="color: black;">#391/8 MC Layout Bangalore-40</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+
+											<!-- Footer Contact Item -->
+											<div class="col-xl-4 footer_contact_col">
+												<div
+													class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+													<div class="footer_contact_icon"><img
+															src="{% static 'images/around.svg' %}" alt="">
+													</div>
+													<div class="footer_contact_title" style="color: black;">send us a message
+													</div>
+													<div class="footer_contact_list">
+														<ul>
+															<li style="color: black;">ipltickets@gmail.com</li>
+															<li style="color: black;">Office@yourbusinessname.com</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col text-center">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;
+								<script>document.write(new Date().getFullYear());</script> All rights
+								reserved 
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</div>
+							</footer>
+						</div>
+
+		
+
+	
+						<script src="{% static 'javas/jquery-3.2.1.min.js' %}">
+						</script>
+						<script src="{% static 'style/bootstrap4/popper.js' %}"></script>
+						<script src="{% static 'style/bootstrap4/bootstrap.min.js' %}"></script>
+						<script src="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+						<script src="{% static 'plugins/Isotope/isotope.pkgd.min.js' %}"></script>
+						<script src="{% static 'plugins/scrollTo/jquery.scrollTo.min.js' %}"></script>
+						<script src="{% static 'plugins/easing/easing.js' %}"></script>
+						<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+						<script src="{% static 'javas/custom.js' %}"></script>
+						<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

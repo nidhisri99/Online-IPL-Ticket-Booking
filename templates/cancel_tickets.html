@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cancel Tickets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'css/cancel.css' %}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+<script>
+     $(document).ready(function(){
+        $('.alert').hide();
+        $(".add-row").click(function(){
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
+            $("table tbody").append(markup);
+        }); 
+        
+        // Find and remove selected table rows
+        $("#delete-row").click(function(){
+            $("table tbody").find('input[name="record"]').each(function(){
+            	if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+            $('.alert').show();
+        });
+
+        
+    });    
+</script>
+</head>
+<style>
+  form{
+      margin: 20px 0;
+  }
+  form input, button{
+      padding: 5px;
+  }
+  table{
+      width: 100%;
+      margin-bottom: 20px;
+  border-collapse: collapse;
+  }
+  table, th, td{
+      border: 1px solid #cdcdcd;
+  }
+  table th, table td{
+      padding: 10px;
+      text-align: left;
+  }
+</style>
+
+<body class="bg">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Your amount will be credited to your account within <strong>three</strong> working days.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div style="text-align: center; color:red;">
+        {% for message in messages %}
+        <h3 class="badge badge-pill badge-danger">  {{message}}</h3>
+        {%  endfor %}
+    </div>
+    <h4 class="display-4"><div class="text-left animated fadeIn" id="wHead"> HELLO {{user.username}}</div></h4>
+    <div class="container" style="background-color: rgba(179, 214, 255, 0.8); border-radius: 30%;box-shadow: 5px 10px; " > 
+        <div class="mt-5 pb-2">
+            <h1 class="display-4"><div class="text-center animated fadeIn" id="wHead">Ticket Cancelation</div></h1>
+       
+        </div>
+
+        <div class="row">
+            <div class="col" id="loginForm">
+                
+                <table>
+                  <thead>
+                      <tr>
+                        <th>check</th>
+                        <th>Name</th>
+                          <th>Match Name</th>
+                          <th>Match Date</th>
+                          <th>No of seats</th>
+                          <th>Amount</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><input type="checkbox" name="record"></td>
+                          <td>{{user.username}}</td>
+                          <td>MUMBAI INDIANS Vs ROYAL CHALLENGER BANGALORE</td>
+                          <td>2020-10-20</td>
+                          <td>5</td>
+                          <td>7500</td>
+                      </tr>
+                  </tbody>
+              </table>
+              
+              <button type="button" class="btn btn-outline-danger" id="delete-row" style=" margin : 5%;">Cancel</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

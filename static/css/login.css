@@ -1,0 +1,208 @@
+.bg {
+    background-image: url( "../images/iplbg.jpg");
+opacity: 1.0;
+height: 100%;
+width: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+#wHead {
+    font-size: 70px;
+    font-family: 'Lobster', cursive;
+    
+}
+#lHead {
+    font-size: 45px;
+    font-family: 'Bitter', serif;
+}
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+.navbar {
+    background-color: rgb(0, 174, 255);
+    color: white;
+} 
+
+.navLink {
+color: rgba(255, 255, 255, 0.8)!important;
+}
+.navLink:hover {
+color: rgba(255, 255, 255, 1.0)!important;
+}
+.logo-image {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+overflow: hidden;
+margin-top: -6px;
+}
+.icon {
+width:30px;
+height: 25px;
+}
+#checkoutWell {
+background-color: rgba(179, 214, 255, 1.0);
+}
+.pHead {
+    font-family: 'Merriweather', serif;
+  }
+.cModal {
+display: none;
+position:fixed;
+z-index: 1;
+left: 0    ;
+top: 0;
+height: 100%;
+width: 100%;
+overflow: auto;
+}
+.cModal-content {
+border-radius: 10%;
+background-color: rgb(252, 252, 252);
+position: fixed;
+height: 50%;
+right: 0;
+width: 50%;
+overflow: auto;
+}
+.auth-notif {
+font-family: 'Open Sans', sans-serif;
+}
+.navNames {
+    font-size: 35px;
+}
+#search-bg
+    {
+        background-image: url("../images/Light-blue-abstract-wallpaper.jpg");
+    opacity: 0.8;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    #breadcrumb-search > a:hover {
+        text-decoration: none;
+    }
+    .flex-container {
+        display: flex;
+    }
+    .flex-container > div {
+        flex: 1;
+    }
+    .badge {
+        background-color: rgba(0, 195, 255,0.8);
+    }
+    .scan-and-borrow {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .input1{
+        width:30%;
+        margin-top: 20px;
+        margin-bottom: 20px; 
+    }
+    .line {
+        border-top: 1px solid rgb(65, 65, 65);
+    }
+    #partitioned {
+  padding-left: 15px;
+  letter-spacing: 42px;
+  border: 0;
+  background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 50px 1px;
+  background-repeat: repeat-x;
+  background-position-x: 35px;
+
+}
+#usr {
+    width: 100%;
+}
+.side-nav {
+    position: sticky;
+}
+
+
+#fHead {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+}
+
+
+/* The container */
+.container-model {
+  display: inline-block;
+  position: relative;
+  padding: 25px;
+  margin: 4px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-model input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  padding-left: 2px;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 35px;
+  background-color: #eee;
+  margin: 5px;
+  padding: 5px;
+  font-size: 17px;
+
+}
+
+/* On mouse-over, add a grey background color */
+.container-model:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-model input:checked ~ .checkmark {
+  background-color: rgb(46, 104, 230);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-model input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-model .checkmark:after {
+  left: 10px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 0 0 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+

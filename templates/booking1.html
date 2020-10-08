@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Booking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="/static/css/login.css" rel="stylesheet">
+</head>
+
+<body class="bg">
+    <div style="text-align: center; color:red">
+        {% for message in messages %}
+        <h3>  {{message}}</h3>
+        {%  endfor %}
+    </div>
+    <div class="container my-5" style="background-color: rgba(179, 214, 255, 0.8);border-radius: 30%;box-shadow: 5px 10px; ">
+        <div class="row">
+            <div class="col-md-4 col-centered">
+                <div class="mt-2" >
+                    <h3 class="display-4"><div class="text-center" id="lHead" style="font-family: 'Lora', serif; font-size:80px">Booking</div></h3>
+                    <hr class="line">
+                </div>
+                
+                <form id="myForm" method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="form-group mt-4" >
+                        <input type="text" class="form-control col-centered" name="Match_name" placeholder="Match Name" id = "matchName" aria-label="Match Name" style="border-radius: 10px;" value="" required>
+                    </div>
+                    <div class="form-group mt-4">
+                       <input type="hidden" class="form-control col-centered" name="B_id" placeholder="Booking_id" aria-label="Booking_id"style="border-radius: 10px;" required>
+                    </div>
+                    <div class="form-group mt-4">
+                        <input type="number" id= "noOfTickets" class="form-control col-centered" name="No_of_tickets" placeholder="No of Tickets" min="1" max="5" onChange = "getNoOfTickets();" aria-label="No_of_tickets" style="border-radius: 10px;" required>
+                       <br>
+                        <button type="button" class="btn btn-primary" id= "selectSeat" data-toggle="modal" data-target="#myModal">Select Gate</button>
+                    </div>
+                    <div class="form-group mt-4">
+                      <input type="text" id= "totalTicketPrice" class="form-control col-centered" name="Price" placeholder="Price" aria-label="Price" style="border-radius: 10px;" value ="" required>
+                  </div>
+                    <div class="form-group mt-4">
+                        <input type="text" class="form-control col-centered"  readonly="readonly" id="bookingDate" name="date" placeholder="Booking_date" aria-label="date" style="border-radius: 10px;" >
+                    </div>
+                    <div class="form-group mt-4">
+                      <input type="text" id="selectedseat" class="form-control col-centered" name="Selected_seats" placeholder="Price" aria-label="Price" hidden style="border-radius: 10px;" value ="">
+                  </div>
+                    <!-- <div class="form-group mt-4">
+                        <input type="tel" class="form-control col-centered" name="phnumber" placeholder="Phone number" aria-label="Phone Number" style="border-radius: 10px;" pattern="[0-9]{10}" required>
+                    </div> -->
+                    <div class="text-center mt-2 pb-2" >
+                        <input class="btn btn-primary" type="submit" value="Book Now">
+                    </div>
+                    
+                </form>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Choose Your Seat</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-sm-4" style="width: 18rem;">
+                                <img class="card-img-top" src="\media\pics\seats1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                  <h4 class="card-title">Gate 1</h4>
+                                  <button  class="btn btn-primary ticketPrice" id="five" data-id="1500">Rs:1500</button>
+                                </div>
+                              </div>
+                              <div class="col-sm-4" style="width: 18rem;">
+                                <img class="card-img-top" src="\media\pics\seats2.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                  <h4 class="card-title">Gate 2</h4>
+                                  <button  class="btn btn-primary ticketPrice" id="nine" data-id="900">Rs:900</button>
+                                </div>
+                              </div>
+                              <div class="col-sm-4" style="width: 18rem;">
+                                <img class="card-img-top" src="\media\pics\seats3.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                  <h4 class="card-title">Gate 3</h4>
+                                  <button  class="btn btn-primary ticketPrice" id="seven" data-id="700">Rs:700</button>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" onclick="getTheSeats()" data-target="#exampleModal">
+                            Select Seats
+                          </button>
+                          <button type="button" class="btn btn-primary" id= "saveTicket" data-dismiss="modal">Save</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select your Seat(s)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height:250px">
+          <div id = 'seatBooking'>
+          
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id='saveSeats'data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/static/js/main.js">
+    </script>
+ 
+    
+</body>
+</html>

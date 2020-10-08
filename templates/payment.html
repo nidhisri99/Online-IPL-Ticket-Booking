@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+</head>
+<body class="bg">
+    
+    <div style="text-align: center; color:red;">
+        {% for message in messages %}
+        <h3>  {{message}}</h3>
+        {%  endfor %}
+    </div>
+    <div class="container-sm" style="background-color: rgba(179, 214, 255, 0.8); border-radius: 30%;box-shadow: 5px 10px; " > 
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Payment Successful <a href="http://127.0.0.1:8000/printtickets/" class="alert-link">Click Here</a>. To print the Tickets.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        <div class="mt-2 pb-5">
+            <h1 class="display-4"><div class="text-center animated fadeIn" id="wHead">Payment Info</div></h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-centered border mb-5" id="loginForm">
+                <div class="mt-2">
+                    <h3 class="display-4"><div class="text-center" id="lHead" style="font-family: 'Bitter', serif;">Payment gateway </div></h3>
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group mt-3"> 
+                        <input type="text" class="form-control col-centered"  maxlength="16" name="CardNumber" placeholder="Card Number" aria-label="CardNumber">
+                    </div>
+                    <div class="form-group mt-3"> 
+                      <input type="text" class="form-control col-centered" name="NameInCard" placeholder="NameInCard" aria-label="NameInCard">
+                  </div>
+                    <div class="form-group">
+                        
+                        <input type="text" class="form-control col-centered" pattern="\d{3}" maxlength="3" name="CVV" placeholder="CVV" aria-label="CVV">
+                    </div>
+                    <div class="input-group"> 
+                      <input type="number" placeholder="MM" pattern="/^01|02|03|04|05|06|07|08|09|10|11|12$/" min="0" max="12" name="MM" class="form-control" required> 
+                      <input type="number" placeholder="YY" pattern="/^20|21|22|23|24|25|26|27|28|29|30|31$/" min="20" max= "31" name="YY" class="form-control" required>
+                     </div>
+                    
+                     <input type="hidden" class="form-control col-centered"  maxlength="16" name="Price" id="totalPaymentPrice"  aria-label="price" value="">
+                    <div class="text-center my-4">
+                        
+                        <input class="btn btn-primary" type="submit" id="submitPayment" value="" >
+                        <!-- <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i> Proceed Payment</button> </p> -->
+                    </div>
+                    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+                    <script src="/static/js/payment.js"></script>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
