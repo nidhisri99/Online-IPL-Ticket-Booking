@@ -1,8 +1,6 @@
 # Online-IPL-Ticket-Booking
 DBMS-Mini Project 
 
-{% if False %}
-
 # Introduction
 
 The goal of this project is to provide minimalistic django project template that everyone can use, which _just works_ out of the box and has the basic setup you can expand on. 
@@ -65,7 +63,6 @@ And then:
       
 After that just install the local dependencies, run migrations, and start the server.
 
-{% endif %}
 
 
 # Getting Started
