@@ -7,8 +7,8 @@ The “IPL Ticket Booking System” has been developed to override the problems 
 The application is reduced as much as possible to avoid errors while entering the data. It also provides error message while entering invalid data. No formal knowledge is needed for the user to use this system. Thus by this all it proves that it is user-friendly. IPL Ticket Booking System, as described above, can lead to error free, secure, reliable and fast management system. It can assist the user to concentrate on their other activities rather to concentrate on the record keeping. Thus it will help organization in better utilization of resource.
 
 
-###Technologies Used: 
-	HTML: Page layout has been designed in HTML.
+### Technologies Used: 
+	HTML: Page layout has been designed in HTML.</br>
 	CSS: CSS has been used for all the designing part.
 	JavaScript: All the validation task and animations has been developed by JavaScript.
 	Python : All the business logic has been implemented in python
