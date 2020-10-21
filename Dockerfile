@@ -1,7 +1,13 @@
 FROM python:3.6
+
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /my_app_dir
-WORKDIR /my_app_dir
-ADD requirements.txt /my_app_dir/
+
+RUN mkdir /ipl
+
+WORKDIR /ipl
+
+ADD requirements.txt /ipl/
+
 RUN pip install — upgrade pip && pip install -r requirements.txt
-ADD . /my_app_dir/
+
+ADD . /ipl/
